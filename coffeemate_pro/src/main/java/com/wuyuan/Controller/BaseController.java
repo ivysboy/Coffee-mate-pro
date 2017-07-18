@@ -24,6 +24,10 @@ public class BaseController {
             Integer num = random.nextInt(20);
             commonStrs.add(num.toString());
         }
-        return new Result(CommonCode.sussess, commonStrs);
+
+        CommonVO vo = new CommonVO();
+        vo.setName("my vps test vo");
+        vo.setValues(commonStrs);
+        return new Result(CommonCode.sussess, vo);
     }
 }
