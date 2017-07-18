@@ -1,2 +1,3 @@
 # Coffee-mate-pro
-Coffee mate server
+This is Coffee mate app server code store
+
