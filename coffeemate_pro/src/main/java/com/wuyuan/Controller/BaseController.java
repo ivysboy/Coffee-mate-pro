@@ -19,9 +19,9 @@ public class BaseController {
     @ResponseBody
     public Result getCommonResponse(@PathVariable String testKey) {
         List<String> commonStrs = new ArrayList<>();
-        for(int i = 0; i< 10; i++) {
+        for(int i = 0; i< 20; i++) {
             Random random = new Random();
-            Integer num = random.nextInt(200);
+            Integer num = random.nextInt(20);
             commonStrs.add(num.toString());
         }
         return new Result(CommonCode.sussess, commonStrs);
