@@ -21,7 +21,7 @@ public class BaseController {
         List<String> commonStrs = new ArrayList<>();
         for(int i = 0; i< 10; i++) {
             Random random = new Random();
-            Integer num = random.nextInt();
+            Integer num = random.nextInt(200);
             commonStrs.add(num.toString());
         }
         return new Result(CommonCode.sussess, commonStrs);
