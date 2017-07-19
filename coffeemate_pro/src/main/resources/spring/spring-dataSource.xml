@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"
+          primary="true">
+        <property name="driverClassName" value="${cm.jdbc.driverClassName}"/>
+        <property name="url" value="${cm.jdbc.url}"/>
+        <property name="username" value="${cm.jdbc.username}"/>
+        <property name="password" value="${cm.jdbc.password}"/>
+        <property name="filters" value="${cm.jdbc.filters}"/>
+
+        <!-- 配置连接池初始化大小、最大、最小、最大等待时间 -->
+        <property name="initialSize" value="${cm.jdbc.initialSize}"/>
+        <property name="maxActive" value="${cm.jdbc.maxActive}"/>
+        <property name="minIdle" value="${cm.jdbc.minIdle}"/>
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${cm.jdbc.maxWait}"/>
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <!--在mysql5.5以下的版本中没有PSCache功能，建议关闭掉。5.5及以上版本有PSCache，建议开启。-->
+        <!--<property name="poolPreparedStatements" value="${cm.jdbc.poolPreparedStatements}"/>-->
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="${cm.jdbc.maxPoolPreparedStatementPerConnectionSize}"/>
+        <property name="maxOpenPreparedStatements" value="${cm.jdbc.maxOpenPreparedStatements}"/>
+
+        <property name="validationQuery" value="${cm.jdbc.validationQuery}"/>
+        <property name="testOnBorrow" value="${cm.jdbc.testOnBorrow}"/>
+        <property name="testOnReturn" value="${cm.jdbc.testOnReturn}"/>
+        <property name="testWhileIdle" value="${cm.jdbc.testWhileIdle}"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${cm.jdbc.timeBetweenEvictionRunsMillis}"/>
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="${cm.jdbc.minEvictableIdleTimeMillis}"/>
+
+        <!-- 打开removeAbandoned功能 -->
+        <property name="removeAbandoned" value="${cm.jdbc.removeAbandoned}"/>
+        <!-- 180秒，超过180秒,连接会自动关闭 -->
+        <property name="removeAbandonedTimeout" value="${cm.jdbc.removeAbandonedTimeout}"/>
+        <!-- abanded连接时输出错误日志 -->
+        <property name="logAbandoned" value="${cm.jdbc.logAbandoned}"/>
+        <property name="proxyFilters">
+            <list>
+                <ref bean="cm-stat-filter"/>
+                <ref bean="cm-wall-filter"/>
+                <ref bean="cm-log-filter"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="cm-stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="slowSqlMillis" value="30000"/>
+        <property name="logSlowSql" value="true"/>
+        <property name="mergeSql" value="true"/>
+        <property name="dbType" value="mysql"/>
+    </bean>
+    <bean id="cm-wall-filter" class="com.alibaba.druid.wall.WallFilter">
+        <property name="dbType" value="mysql"/>
+        <property name="config" ref="cm-wall-config"/>
+    </bean>
+    <bean id="cm-wall-config" class="com.alibaba.druid.wall.WallConfig">
+        <property name="multiStatementAllow" value="true" />
+    </bean>
+    <bean id="cm-log-filter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
+        <property name="resultSetLogEnabled" value="true"/>
+    </bean>
+
+    <bean id="cmSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 引入mybatis配置文件 -->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+    </bean>
+
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.wuyuan.base.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="cmSqlSessionFactory"/>
+    </bean>
+
+    <!-- (事务管理) -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager" primary="true">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>

@@ -1,0 +1,7 @@
+logging:
+level:
+root: error
+org.springframework.web: info
+org.apache.ibatis: debug
+com.wuyuan: debug
+path: "./logs"

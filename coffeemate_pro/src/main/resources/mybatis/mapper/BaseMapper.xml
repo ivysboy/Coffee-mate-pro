@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuyuan.base.mapper.BaseMapper">
+
+
+    <select id="getArticles" resultType="com.wuyuan.base.module.ArticleDto">
+        SELECT
+          id AS id,
+          name AS name,
+          content AS content,
+          create_time AS createTime
+
+        FROM articles
+        WHERE 1=1
+    </select>
+</mapper>
