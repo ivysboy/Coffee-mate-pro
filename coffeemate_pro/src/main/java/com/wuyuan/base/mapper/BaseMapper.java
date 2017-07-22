@@ -1,6 +1,6 @@
 package com.wuyuan.base.mapper;
 
-import com.wuyuan.base.module.ArticleDto;
+import com.wuyuan.home.module.ArticleDto;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
