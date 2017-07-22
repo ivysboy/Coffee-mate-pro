@@ -69,9 +69,10 @@ public class UploadFileController {
 
                 result.put("name", name);
                 result.put("status","SUCCESS");
-                result.put("url","static/img/"+name);
+                result.put("url","images/"+name);
                 result.put("title",name);
                 result.put("original",name);
+                result.put("readable", image.canRead());
 
                 return result;
             } catch (Exception e) {
