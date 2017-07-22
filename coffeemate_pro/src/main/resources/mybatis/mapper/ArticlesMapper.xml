@@ -37,10 +37,22 @@
           id AS id,
           name AS name,
           content AS content,
-          create_time AS createTime
+          create_time AS createTime,
+          brief AS brief
 
         FROM articles
         WHERE 1=1
+    </select>
+    <select id="getArticleById" resultType="com.wuyuan.home.module.ArticleDto">
+        SELECT
+          id AS id,
+          name AS name,
+          content AS content,
+          create_time AS createTime,
+          brief AS brief
+
+        FROM articles
+        WHERE id=#{id}
     </select>
 
 </mapper>

@@ -25,4 +25,11 @@ public interface ArticlesMapper {
      * @return
      */
     List<ArticleDto> getArticlesPage(GeneralRequestDto requestDto);
+
+    /**
+     * 通过id获取文章
+     * @param id
+     * @return
+     */
+    ArticleDto getArticleById(@Param("id") String id);
 }
