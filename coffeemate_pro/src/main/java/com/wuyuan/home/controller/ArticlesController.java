@@ -44,10 +44,13 @@ public class ArticlesController {
 
     @GetMapping("/list")
     @ResponseBody
-    public Result getArticlesList(@RequestParam int page,
-                                  @RequestParam String orderBy) {
+    public Result getArticlesList(@RequestParam int page, String orderBy) {
         if(page == 0) {
             page = 1;
+        }
+
+        if(StringUtils.isEmpty(orderBy)) {
+            orderBy = "-createtime";
         }
 
         GeneralRequestDto requestDto = new GeneralRequestDto();
