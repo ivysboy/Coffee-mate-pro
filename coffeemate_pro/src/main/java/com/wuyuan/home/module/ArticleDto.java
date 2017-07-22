@@ -13,6 +13,15 @@ public class ArticleDto implements Serializable {
     private String name;
     private String content;
     private Date createTime;
+    private String brief;
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
 
     public String getId() {
         return id;

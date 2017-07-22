@@ -13,6 +13,9 @@
         <if test="content != null and content != ''">
             content,
         </if>
+        <if test="brief != null and brief != ''">
+            brief,
+        </if>
         create_time)
         VALUES (
         <if test="id != null and id != ''">
@@ -23,6 +26,9 @@
         </if>
         <if test="content != null and content != ''">
             #{content,jdbcType=VARCHAR},
+        </if>
+        <if test="brief != null and brief != ''">
+            #{brief,jdbcType=VARCHAR}
         </if>
         now());
     </insert>
