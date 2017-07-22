@@ -8,7 +8,7 @@ echo "Pull new code in local branch"
 
 cd coffeemate_pro
 
-mvn clean package
+mvn clean package -Dprod
 echo "Package new war"
 
 rm /root/tomcat/webapps/coffee-mate.war
