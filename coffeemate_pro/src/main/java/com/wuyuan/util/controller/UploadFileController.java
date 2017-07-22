@@ -55,14 +55,12 @@ public class UploadFileController {
                 name = name + ext;
                 byte[] bytes = file.getBytes();
                 File image = new File(serverSetting.getImageStorePath() + name);
-                image.setWritable(true , false);
-                image.setExecutable(true, false);
-                image.setReadable(true, false);
                 OutputStream outputStream = new FileOutputStream(image);
                 BufferedOutputStream stream =
                         new BufferedOutputStream(outputStream);
                 stream.write(bytes);
                 stream.close();
+                image.setReadable(true, false);
 
                 ArticleDto article = new ArticleDto();
                 article.setId(articleId);
