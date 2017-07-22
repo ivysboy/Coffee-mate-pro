@@ -16,9 +16,6 @@
             <properties>
                 <profiles.active>dev</profiles.active>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <build>
                 <filters>
                     <filter>profiles/dev/config.properties</filter>
