@@ -73,7 +73,8 @@
           name AS name,
           content AS content,
           create_time AS createTime,
-          brief AS brief
+          brief AS brief,
+          image AS image
 
         FROM articles
         WHERE id=#{id}
