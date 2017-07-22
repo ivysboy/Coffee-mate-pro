@@ -22,6 +22,7 @@
             <build>
                 <filters>
                     <filter>profiles/dev/config.properties</filter>
+                    <filter>profiles/dev/server.properties</filter>
                 </filters>
             </build>
         </profile>
@@ -33,6 +34,7 @@
             <build>
                 <filters>
                     <filter>profiles/prod/config.properties</filter>
+                    <filter>profiles/dev/server.properties</filter>
                 </filters>
             </build>
         </profile>

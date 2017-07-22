@@ -7,6 +7,7 @@ import com.happylifeplat.plugin.mybatis.pager.PageParameter;
 import com.wuyuan.home.mapper.ArticlesMapper;
 import com.wuyuan.home.module.ArticleDto;
 import com.wuyuan.home.module.GeneralRequestDto;
+import com.wuyuan.util.ServerSetting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class ArticlesController {
 
     @Autowired
     private ArticlesMapper articlesMapper;
+
+    @Autowired
+    private ServerSetting serverSetting;
 
     @PostMapping("/insertArticles")
     @ResponseBody
@@ -56,7 +60,7 @@ public class ArticlesController {
         }
 
         List<ArticleDto> articles = articlesMapper.getArticlesPage(requestDto);
-
+        articles.forEach(article -> article.setImage(serverSetting.getImagePrefix() + article.getImage()));
         return Result.success(articles);
     }
 
@@ -71,6 +75,8 @@ public class ArticlesController {
         if(article == null) {
             return Result.error(CommonCode.fail);
         }
+
+        article.setImage(serverSetting.getImagePrefix() + article.getImage());
 
         return Result.success(article);
     }

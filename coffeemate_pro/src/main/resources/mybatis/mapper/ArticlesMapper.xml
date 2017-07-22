@@ -16,6 +16,9 @@
         <if test="brief != null and brief != ''">
             brief,
         </if>
+        <if test="image != null and image != ''">
+            image,
+        </if>
         create_time)
         VALUES (
         <if test="id != null and id != ''">
@@ -30,6 +33,9 @@
         <if test="brief != null and brief != ''">
             #{brief,jdbcType=VARCHAR},
         </if>
+        <if test="image != null and image != ''">
+            #{image,jdbcType=VARCHAR},
+        </if>
         now());
     </insert>
     <select id="getArticlesPage" resultType="com.wuyuan.home.module.ArticleDto">
@@ -38,7 +44,8 @@
           name AS name,
           content AS content,
           create_time AS createTime,
-          brief AS brief
+          brief AS brief,
+          image AS image
 
         FROM articles
         WHERE 1=1

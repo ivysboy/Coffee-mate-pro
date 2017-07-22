@@ -14,6 +14,15 @@ public class ArticleDto implements Serializable {
     private String content;
     private Date createTime;
     private String brief;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getBrief() {
         return brief;
