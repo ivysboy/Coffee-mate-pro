@@ -55,7 +55,7 @@ public class UploadFileController {
                 name = name + ext;
                 byte[] bytes = file.getBytes();
                 File image = new File(serverSetting.getImageStorePath() + name);
-                image.setReadable(true);
+                image.setReadable(true, false);
                 OutputStream outputStream = new FileOutputStream(image);
                 BufferedOutputStream stream =
                         new BufferedOutputStream(outputStream);
