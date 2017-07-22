@@ -74,8 +74,8 @@
       <file leaf-file-name="server.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/profiles/dev/server.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="35" />
+            <state relative-caret-position="20">
+              <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -94,17 +94,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.properties" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/profiles/prod/server.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+            <state relative-caret-position="20">
+              <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UploadFileController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UploadFileController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wuyuan/util/controller/UploadFileController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -193,11 +193,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/wuyuan/home/controller/ArticlesController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wuyuan/home/mapper/ArticlesMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/ArticlesMapper.xml" />
-        <option value="$PROJECT_DIR$/profiles/dev/server.properties" />
-        <option value="$PROJECT_DIR$/profiles/prod/server.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/config/server.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/wuyuan/util/ServerSetting.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wuyuan/util/controller/UploadFileController.java" />
+        <option value="$PROJECT_DIR$/profiles/dev/server.properties" />
+        <option value="$PROJECT_DIR$/profiles/prod/server.properties" />
       </list>
     </option>
   </component>
@@ -1376,7 +1376,7 @@
       <workItem from="1500395297035" duration="1657000" />
       <workItem from="1500462999327" duration="16000" />
       <workItem from="1500480494933" duration="8498000" />
-      <workItem from="1500735266670" duration="15583000" />
+      <workItem from="1500735266670" duration="15712000" />
     </task>
     <servers />
   </component>
@@ -1389,7 +1389,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25945000" />
+    <option name="totallyTimeSpent" value="26074000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="23" width="1440" height="810" extended-state="6" />
@@ -1884,22 +1884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiles/prod/server.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiles/dev/server.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/src.zip!/java/io/BufferedOutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1926,6 +1910,22 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiles/dev/server.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiles/prod/server.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
