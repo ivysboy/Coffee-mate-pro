@@ -10,6 +10,24 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "server", locations = "classpath:config/server.properties")
 public class ServerSetting {
     private String imagePrefix;
+    private String imageContentPath;
+    private String imageStorePath;
+
+    public String getImageStorePath() {
+        return imageStorePath;
+    }
+
+    public void setImageStorePath(String imageStorePath) {
+        this.imageStorePath = imageStorePath;
+    }
+
+    public String getImageContentPath() {
+        return imageContentPath;
+    }
+
+    public void setImageContentPath(String imageContentPath) {
+        this.imageContentPath = imageContentPath;
+    }
 
     public String getImagePrefix() {
         return imagePrefix;

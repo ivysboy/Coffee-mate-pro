@@ -38,6 +38,23 @@
         </if>
         now());
     </insert>
+    <update id="updateArticle" parameterType="com.wuyuan.home.module.ArticleDto">
+        UPDATE articles SET
+        <if test="name != null and name != ''">
+            name=#{name},
+        </if>
+        <if test="content != null and content != ''">
+            content=#{content},
+        </if>
+        <if test="brief != null and brief != ''">
+            brief=#{brief},
+        </if>
+        <if test="image != null and image != ''">
+            image=#{image},
+        </if>
+        update_time = now()
+        WHERE id = #{id}
+    </update>
     <select id="getArticlesPage" resultType="com.wuyuan.home.module.ArticleDto">
         SELECT
           id AS id,

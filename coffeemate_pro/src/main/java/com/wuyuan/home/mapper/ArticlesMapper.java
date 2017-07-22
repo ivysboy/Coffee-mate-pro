@@ -32,4 +32,11 @@ public interface ArticlesMapper {
      * @return
      */
     ArticleDto getArticleById(@Param("id") String id);
+
+    /**
+     * 更新文章信息
+     * @param article
+     * @return
+     */
+    int updateArticle(ArticleDto article);
 }
