@@ -28,7 +28,7 @@
             #{content,jdbcType=VARCHAR},
         </if>
         <if test="brief != null and brief != ''">
-            #{brief,jdbcType=VARCHAR}
+            #{brief,jdbcType=VARCHAR},
         </if>
         now());
     </insert>
