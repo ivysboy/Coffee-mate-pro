@@ -1,7 +1,3 @@
-server:
-  port: 8098
-  context-path: /coffee-mate
-
 logging:
 level:
 root: error
