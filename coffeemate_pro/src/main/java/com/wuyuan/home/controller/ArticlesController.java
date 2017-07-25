@@ -72,6 +72,7 @@ public class ArticlesController {
     @GetMapping("/getArticleById")
     @ResponseBody
     public Result getArticle(@RequestParam String articleId) {
+        log.info("============================ArticlesController @ getArticleById start=========\n");
         if(StringUtils.isEmpty(articleId)) {
             return Result.error(AppApiCode.params_error);
         }
@@ -82,7 +83,7 @@ public class ArticlesController {
         }
 
         article.setImage(serverSetting.getImagePrefix() + article.getImage());
-
+        log.info("============================ArticlesController @ getArticleById end=========\n");
         return Result.success(article);
     }
 }
