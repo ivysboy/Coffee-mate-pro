@@ -116,8 +116,8 @@
       <file leaf-file-name="config.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/profiles/prod/config.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="39" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+            <state relative-caret-position="40">
+              <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -1075,7 +1075,7 @@
       <workItem from="1500898460740" duration="804000" />
       <workItem from="1500921173216" duration="797000" />
       <workItem from="1500923145994" duration="98000" />
-      <workItem from="1500947416555" duration="4998000" />
+      <workItem from="1500947416555" duration="5226000" />
     </task>
     <servers />
   </component>
@@ -1088,7 +1088,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39113000" />
+    <option name="totallyTimeSpent" value="39341000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="815" extended-state="6" />
@@ -1516,8 +1516,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/profiles/prod/config.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="39" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+        <state relative-caret-position="40">
+          <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
           <folding />
         </state>
       </provider>
