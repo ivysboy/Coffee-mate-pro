@@ -1,4 +1,4 @@
-package com.wuyuan.home.module;
+package com.wuyuan.util.module;
 
 import java.io.Serializable;
 import java.util.Date;

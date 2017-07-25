@@ -1,7 +1,7 @@
 package com.wuyuan.util.controller;
 
-import com.wuyuan.home.mapper.ArticlesMapper;
-import com.wuyuan.home.module.ArticleDto;
+import com.wuyuan.util.mapper.ArticlesMapper;
+import com.wuyuan.util.module.ArticleDto;
 import com.wuyuan.util.ServerSetting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

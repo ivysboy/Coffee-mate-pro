@@ -3,7 +3,7 @@
 <mapper namespace="com.wuyuan.base.mapper.BaseMapper">
 
 
-    <select id="getArticles" resultType="com.wuyuan.home.module.ArticleDto">
+    <select id="getArticles" resultType="com.wuyuan.util.module.ArticleDto">
         SELECT
           id AS id,
           name AS name,

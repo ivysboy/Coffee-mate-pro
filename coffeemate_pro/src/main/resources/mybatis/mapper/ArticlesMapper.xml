@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wuyuan.home.mapper.ArticlesMapper">
+<mapper namespace="com.wuyuan.util.mapper.ArticlesMapper">
 
-    <insert id="insertArticle" parameterType="com.wuyuan.home.module.ArticleDto">
+    <insert id="insertArticle" parameterType="com.wuyuan.util.module.ArticleDto">
         INSERT INTO articles (
         <if test="id != null and id != ''">
             id,
@@ -38,7 +38,7 @@
         </if>
         now());
     </insert>
-    <update id="updateArticle" parameterType="com.wuyuan.home.module.ArticleDto">
+    <update id="updateArticle" parameterType="com.wuyuan.util.module.ArticleDto">
         UPDATE articles SET
         <if test="name != null and name != ''">
             name=#{name},
@@ -55,7 +55,7 @@
         update_time = now()
         WHERE id = #{id}
     </update>
-    <select id="getArticlesPage" resultType="com.wuyuan.home.module.ArticleDto">
+    <select id="getArticlesPage" resultType="com.wuyuan.util.module.ArticleDto">
         SELECT
           id AS id,
           name AS name,
@@ -67,7 +67,7 @@
         FROM articles
         WHERE 1=1
     </select>
-    <select id="getArticleById" resultType="com.wuyuan.home.module.ArticleDto">
+    <select id="getArticleById" resultType="com.wuyuan.util.module.ArticleDto">
         SELECT
           id AS id,
           name AS name,

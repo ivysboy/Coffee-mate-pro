@@ -1,8 +1,7 @@
-package com.wuyuan.home.mapper;
+package com.wuyuan.util.mapper;
 
-import com.happylifeplat.plugin.mybatis.pager.PageParameter;
-import com.wuyuan.home.module.ArticleDto;
-import com.wuyuan.home.module.GeneralRequestDto;
+import com.wuyuan.util.module.ArticleDto;
+import com.wuyuan.util.module.GeneralRequestDto;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.wuyuan.home.module;
+package com.wuyuan.util.module;
 
 import com.happylifeplat.plugin.mybatis.pager.PageParameter;
 

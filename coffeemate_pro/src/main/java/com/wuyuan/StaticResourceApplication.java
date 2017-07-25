@@ -11,14 +11,14 @@ import org.springframework.context.annotation.ImportResource;
  */
 @ImportResource({"classpath:spring/applicationContext.xml"})
 @SpringBootApplication
-public class CoffeeMateApplication extends SpringBootServletInitializer {
+public class StaticResourceApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(CoffeeMateApplication.class);
+        return builder.sources(StaticResourceApplication.class);
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(CoffeeMateApplication.class, args);
+        SpringApplication.run(StaticResourceApplication.class, args);
     }
 }
