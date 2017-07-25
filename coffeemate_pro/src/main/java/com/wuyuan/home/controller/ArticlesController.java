@@ -45,7 +45,6 @@ public class ArticlesController {
     @GetMapping("/list")
     @ResponseBody
     public Result getArticlesList(@RequestParam int page, String orderBy) {
-        log.info("============================ArticlesController @ getArticlesList start=========\n");
         if(page == 0) {
             page = 1;
         }
@@ -65,14 +64,12 @@ public class ArticlesController {
 
         List<ArticleDto> articles = articlesMapper.getArticlesPage(requestDto);
         articles.forEach(article -> article.setImage(serverSetting.getImagePrefix() + article.getImage()));
-        log.info("============================ArticlesController @ getArticlesList end=========\n");
         return Result.success(articles);
     }
 
     @GetMapping("/getArticleById")
     @ResponseBody
     public Result getArticle(@RequestParam String articleId) {
-        log.info("============================ArticlesController @ getArticleById start=========\n");
         if(StringUtils.isEmpty(articleId)) {
             return Result.error(AppApiCode.params_error);
         }
@@ -83,7 +80,6 @@ public class ArticlesController {
         }
 
         article.setImage(serverSetting.getImagePrefix() + article.getImage());
-        log.info("============================ArticlesController @ getArticleById end=========\n");
         return Result.success(article);
     }
 }
