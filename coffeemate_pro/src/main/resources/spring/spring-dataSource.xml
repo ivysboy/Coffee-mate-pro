@@ -7,13 +7,12 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"
+    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" init-method="getPool" destroy-method="close"
           primary="true">
         <property name="driverClassName" value="${cm.jdbc.driverClassName}"/>
         <property name="url" value="${cm.jdbc.url}"/>
         <property name="username" value="${cm.jdbc.username}"/>
         <property name="password" value="${cm.jdbc.password}"/>
-        <property name="filters" value="${cm.jdbc.filters}"/>
 
         <!-- 配置连接池初始化大小、最大、最小、最大等待时间 -->
         <property name="initialSize" value="${cm.jdbc.initialSize}"/>
@@ -22,12 +21,6 @@
         <!-- 配置获取连接等待超时的时间 -->
         <property name="maxWait" value="${cm.jdbc.maxWait}"/>
 
-        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-        <!--在mysql5.5以下的版本中没有PSCache功能，建议关闭掉。5.5及以上版本有PSCache，建议开启。-->
-        <!--<property name="poolPreparedStatements" value="${cm.jdbc.poolPreparedStatements}"/>-->
-        <property name="maxPoolPreparedStatementPerConnectionSize"
-                  value="${cm.jdbc.maxPoolPreparedStatementPerConnectionSize}"/>
-        <property name="maxOpenPreparedStatements" value="${cm.jdbc.maxOpenPreparedStatements}"/>
 
         <property name="validationQuery" value="${cm.jdbc.validationQuery}"/>
         <property name="testOnBorrow" value="${cm.jdbc.testOnBorrow}"/>
@@ -45,29 +38,6 @@
         <property name="removeAbandonedTimeout" value="${cm.jdbc.removeAbandonedTimeout}"/>
         <!-- abanded连接时输出错误日志 -->
         <property name="logAbandoned" value="${cm.jdbc.logAbandoned}"/>
-        <property name="proxyFilters">
-            <list>
-                <ref bean="cm-stat-filter"/>
-                <ref bean="cm-wall-filter"/>
-                <ref bean="cm-log-filter"/>
-            </list>
-        </property>
-    </bean>
-    <bean id="cm-stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
-        <property name="slowSqlMillis" value="30000"/>
-        <property name="logSlowSql" value="true"/>
-        <property name="mergeSql" value="true"/>
-        <property name="dbType" value="mysql"/>
-    </bean>
-    <bean id="cm-wall-filter" class="com.alibaba.druid.wall.WallFilter">
-        <property name="dbType" value="mysql"/>
-        <property name="config" ref="cm-wall-config"/>
-    </bean>
-    <bean id="cm-wall-config" class="com.alibaba.druid.wall.WallConfig">
-        <property name="multiStatementAllow" value="true" />
-    </bean>
-    <bean id="cm-log-filter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
-        <property name="resultSetLogEnabled" value="true"/>
     </bean>
 
     <bean id="cmSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

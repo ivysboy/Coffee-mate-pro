@@ -1,16 +1,21 @@
 package com.wuyuan.util;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by xuwuyuan on 2017/7/23.
  */
 @Configuration
-@ConfigurationProperties(prefix = "server")
 public class ServerSetting {
+
+    @Value("${server.imagePrefix}")
     private String imagePrefix;
+
+    @Value("${server.imageContentPath}")
     private String imageContentPath;
+
+    @Value("${server.imageStorePath}")
     private String imageStorePath;
 
     public String getImageStorePath() {
