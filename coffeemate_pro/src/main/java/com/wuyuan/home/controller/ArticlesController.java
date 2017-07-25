@@ -45,6 +45,7 @@ public class ArticlesController {
     @GetMapping("/list")
     @ResponseBody
     public Result getArticlesList(@RequestParam int page, String orderBy) {
+        log.info("============================ArticlesController @ getArticlesList start=========\n");
         if(page == 0) {
             page = 1;
         }
@@ -64,6 +65,7 @@ public class ArticlesController {
 
         List<ArticleDto> articles = articlesMapper.getArticlesPage(requestDto);
         articles.forEach(article -> article.setImage(serverSetting.getImagePrefix() + article.getImage()));
+        log.info("============================ArticlesController @ getArticlesList end=========\n");
         return Result.success(articles);
     }
 
