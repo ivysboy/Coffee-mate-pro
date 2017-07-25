@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
  * Created by xuwuyuan on 2017/7/23.
  */
 @Configuration
-@ConfigurationProperties(prefix = "server", locations = "classpath:config/server.properties")
+@ConfigurationProperties(prefix = "server")
 public class ServerSetting {
     private String imagePrefix;
     private String imageContentPath;
