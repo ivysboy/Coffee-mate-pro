@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuyuan.user.mapper.UserMapper">
+    <insert id="insertUser" parameterType="com.wuyuan.user.module.UserDto">
+        INSERT INTO user
+           (<if test="id != null || id != ''">
+                id,
+            </if>
+            <if test="userName != null || userName != ''">
+                username,
+            </if>
+            <if test="passWord != null || passWord != null">
+                password,
+            </if>
+            <if test="email != null || email != ''">
+                email,
+            </if>
+            <if test="image != null || image != ''">
+                image_url,
+            </if>
+            create_time,
+            update_time,
+            last_login_date,
+            is_confirm)
+        VALUES (
+            <if test="id != null || id != ''">
+                #{id},
+            </if>
+            <if test="userName != null || userName != ''">
+                #{userName},
+            </if>
+            <if test="passWord != null || passWord != null">
+                #{passWord},
+            </if>
+            <if test="email != null || email != ''">
+                #{email},
+            </if>
+            <if test="image != null || image != ''">
+                #{image},
+            </if>
+            now(),
+            now(),
+            now(),
+            0)
+    </insert>
+
+    <select id="checkRepeatAccout" resultType="java.lang.String">
+        SELECT username FROM user WHERE email = #{email}
+    </select>
+
+    <select id="signIn" resultType="com.wuyuan.user.module.UserSignInDto">
+        SELECT id, username AS userName, image_url AS imageUrl
+        FROM user
+        WHERE email = #{email}
+        AND password = #{passWord}
+    </select>
+</mapper>
