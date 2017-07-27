@@ -44,6 +44,29 @@
             0)
     </insert>
 
+    <update id="updateInfo" parameterType="com.wuyuan.user.module.UserDto">
+        UPDATE user
+        <set>
+            <if test="userName != null">
+                username = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="image != null">
+                image_url = #{image,jdbcType=VARCHAR},
+            </if>
+            <if test="passWord != null">
+                password = #{passWord,jdbcType=VARCHAR},
+            </if>
+            <if test="lastLoginTime != null">
+                last_login_date = #{lastLoginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isConfirm != null">
+                is_confirm = #{isConfirm,jdbcType=TINYINT},
+            </if>
+            update_time = now()
+        </set>
+        WHERE id = #{id}
+    </update>
+
     <select id="checkRepeatAccout" resultType="java.lang.String">
         SELECT username FROM user WHERE email = #{email}
     </select>

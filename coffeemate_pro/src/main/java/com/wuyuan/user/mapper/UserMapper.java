@@ -16,4 +16,6 @@ public interface UserMapper {
     int insertUser(UserDto user);
 
     UserSignInDto signIn(UserDto request);
+
+    int updateInfo(UserDto request);
 }

@@ -13,6 +13,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -62,6 +63,7 @@ public class UserController {
 
         user.setId(UUID.randomUUID().toString());
 
+        // 插入用户
         int result = 0;
         try {
             result = userMapper.insertUser(user);
@@ -73,12 +75,8 @@ public class UserController {
             return Result.error();
         }
 
-        UserSignInDto signInDto = signIn(user);
-        if(signInDto == null) {
-            return Result.error();
-        }
-
-        return Result.success(signInDto);
+        // 注册成功登陆
+        return signIn(user);
     }
 
     @PostMapping("/signIn")
@@ -87,23 +85,27 @@ public class UserController {
         if(StringUtils.isEmpty(user.getEmail()) || StringUtils.isEmpty(user.getPassWord())) {
             return Result.error();
         }
-
-        UserSignInDto signInDto = signIn(user);
-        if(signInDto == null) {
-            return Result.error();
-        }
-
-        return Result.success(signInDto);
+        return signIn(user);
     }
 
-    private UserSignInDto signIn(UserDto user) {
+    private Result signIn(UserDto user) {
         if(StringUtils.isEmpty(user.getEmail()) || StringUtils.isEmpty(user.getPassWord())) {
-            return null;
+            return Result.error();
         }
 
         UserSignInDto signInDto = userMapper.signIn(user);
         logger.info("=============UserController @ signin: " + JSON.toJSON(signInDto));
-        return signInDto;
+
+        if(signInDto == null) {
+            return Result.error();
+        }
+
+        UserDto lastLogin = new UserDto();
+        lastLogin.setId(signInDto.getId());
+        lastLogin.setLastLoginTime(new Date());
+        userMapper.updateInfo(lastLogin);
+
+        return Result.success(signInDto);
     }
 
 }
