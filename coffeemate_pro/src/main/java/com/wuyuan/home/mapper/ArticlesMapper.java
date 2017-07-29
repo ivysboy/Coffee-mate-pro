@@ -1,6 +1,5 @@
 package com.wuyuan.home.mapper;
 
-import com.happylifeplat.plugin.mybatis.pager.PageParameter;
 import com.wuyuan.home.module.ArticleDto;
 import com.wuyuan.home.module.ArticleListDto;
 import com.wuyuan.home.module.GeneralRequestDto;

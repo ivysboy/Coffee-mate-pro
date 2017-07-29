@@ -1,6 +1,7 @@
 package com.wuyuan.home.controller;
 
 import com.happylifeplat.Result;
+import com.happylifeplat.plugin.mybatis.pager.PageParameter;
 import com.wuyuan.home.mapper.ArticlesMapper;
 import com.wuyuan.home.mapper.HomeMapper;
 import com.wuyuan.home.module.ArticleListDto;
@@ -58,8 +59,12 @@ public class HomeController {
 
         for(HomeContentDto content: contentList) {
             GeneralRequestDto articleRequest = new GeneralRequestDto();
+            PageParameter page = new PageParameter();
+            page.setCurrentPage(1);
+            page.setPageSize(7);
             articleRequest.setGroupId(content.getGroupId());
-            articleRequest.setOrderBy("-createtime");
+            articleRequest.setOrderBy("-create_time");
+            articleRequest.setPage(page);
             List<ArticleListDto> articleList = articlesMapper.getArticlesPage(articleRequest);
             articleList.forEach(article -> {
                 article.setImage(serverSetting.getImagePrefix() + article.getImage());
