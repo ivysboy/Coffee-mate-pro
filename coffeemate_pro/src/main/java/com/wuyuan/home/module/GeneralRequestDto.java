@@ -8,6 +8,15 @@ import com.happylifeplat.plugin.mybatis.pager.PageParameter;
 public class GeneralRequestDto {
     private PageParameter page;
     private String orderBy;
+    private String groupId;
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
 
     public String getOrderBy() {
         return orderBy;

@@ -2,6 +2,7 @@ package com.wuyuan.home.mapper;
 
 import com.happylifeplat.plugin.mybatis.pager.PageParameter;
 import com.wuyuan.home.module.ArticleDto;
+import com.wuyuan.home.module.ArticleListDto;
 import com.wuyuan.home.module.GeneralRequestDto;
 import org.apache.ibatis.annotations.Param;
 
@@ -24,7 +25,7 @@ public interface ArticlesMapper {
      * @param requestDto
      * @return
      */
-    List<ArticleDto> getArticlesPage(GeneralRequestDto requestDto);
+    List<ArticleListDto> getArticlesPage(GeneralRequestDto requestDto);
 
     /**
      * 通过id获取文章

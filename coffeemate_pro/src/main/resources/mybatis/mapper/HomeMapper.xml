@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuyuan.home.mapper.HomeMapper">
+    <select id="getHomeBanner" resultType="com.wuyuan.home.module.BannerDto">
+        SELECT
+            id,
+            title,
+            brief,
+            image,
+            auther,
+            article_id AS articleId
+        FROM banner
+        WHERE is_disable = 0 OR is_disable IS NULL
+    </select>
+
+    <select id="getHomeContentList" resultType="com.wuyuan.home.module.HomeContentDto">
+        SELECT
+            id as groupId,
+            name AS title,
+            `index`
+        FROM `group`
+        WHERE is_disable = 0 OR is_disable is NULL
+    </select>
+
+</mapper>

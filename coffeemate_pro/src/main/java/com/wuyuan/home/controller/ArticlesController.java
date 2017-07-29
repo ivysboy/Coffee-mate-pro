@@ -6,6 +6,7 @@ import com.happylifeplat.messagecode.impl.CommonCode;
 import com.happylifeplat.plugin.mybatis.pager.PageParameter;
 import com.wuyuan.home.mapper.ArticlesMapper;
 import com.wuyuan.home.module.ArticleDto;
+import com.wuyuan.home.module.ArticleListDto;
 import com.wuyuan.home.module.GeneralRequestDto;
 import com.wuyuan.util.ServerSetting;
 import org.slf4j.Logger;
@@ -44,25 +45,30 @@ public class ArticlesController {
 
     @GetMapping("/list")
     @ResponseBody
-    public Result getArticlesList(@RequestParam int page, String orderBy) {
+    public Result getArticlesList(@RequestParam int page, String orderBy, @RequestParam String groupId) {
         if(page == 0) {
             page = 1;
         }
 
+        if(StringUtils.isEmpty(groupId)) {
+            return Result.error(AppApiCode.params_error);
+        }
+
         if(StringUtils.isEmpty(orderBy)) {
-            orderBy = "-createtime";
+            orderBy = "-create_time";
         }
 
         GeneralRequestDto requestDto = new GeneralRequestDto();
         PageParameter pageParameter = new PageParameter();
         pageParameter.setCurrentPage(page);
         requestDto.setPage(pageParameter);
+        requestDto.setGroupId(groupId);
 
         if(!StringUtils.isEmpty(orderBy)) {
             requestDto.setOrderBy(orderBy);
         }
 
-        List<ArticleDto> articles = articlesMapper.getArticlesPage(requestDto);
+        List<ArticleListDto> articles = articlesMapper.getArticlesPage(requestDto);
         articles.forEach(article -> article.setImage(serverSetting.getImagePrefix() + article.getImage()));
         return Result.success(articles);
     }
