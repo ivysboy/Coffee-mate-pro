@@ -106,8 +106,12 @@ public class UserController {
             }
             return Result.success(device);
         }
-        userMapper.updateLoginInfo(info.getDeviceId(), device.getProdVersion());
+
         info.setProdVersion(device.getProdVersion());
+        info.setDevicePlatform(device.getDevicePlatform());
+        info.setSystemVersion(device.getSystemVersion());
+        userMapper.updateLoginInfo(info);
+
         return Result.success(info);
     }
 

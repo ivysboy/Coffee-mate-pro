@@ -129,11 +129,17 @@
     <update id="updateLoginInfo">
         UPDATE anonymous
         <set>
+            <if test="devicePlatform != null">
+                device_platform = #{devicePlatform,jdbcType=VARCHAR},
+            </if>
+            <if test="systemVersion != null">
+                system_version = #{systemVersion,jdbcType=VARCHAR},
+            </if>
             <if test="prodVersion != null">
                 prodVersion = #{prodVersion,jdbcType=VARCHAR},
             </if>
             last_login_time = now()
         </set>
-        WHERE device_id = #{id}
+        WHERE device_id = #{deviceId}
     </update>
 </mapper>

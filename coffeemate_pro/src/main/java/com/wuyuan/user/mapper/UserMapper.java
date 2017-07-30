@@ -24,5 +24,5 @@ public interface UserMapper {
 
     int insertDeviceInfo(DeviceInfoDto device);
 
-    int updateLoginInfo(@Param("id") String deviceId, @Param("prodVersion") String prodVersion);
+    int updateLoginInfo(DeviceInfoDto device);
 }
