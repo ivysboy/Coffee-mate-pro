@@ -10,5 +10,15 @@
             `like`
         FROM video
         WHERE is_disable = 0 OR is_disable IS NULL
+        AND group_id = #{groupId}
+    </select>
+    <select id="getVideoGroups" resultType="com.wuyuan.video.module.VideoGroupDto">
+        SELECT
+            id,
+            name,
+            `index`
+        FROM video_group
+        WHERE is_disable = 0 OR is_disable IS NULL
+        ORDER BY `index`
     </select>
 </mapper>

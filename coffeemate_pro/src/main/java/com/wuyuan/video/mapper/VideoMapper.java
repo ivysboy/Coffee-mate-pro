@@ -2,6 +2,7 @@ package com.wuyuan.video.mapper;
 
 import com.wuyuan.home.module.GeneralRequestDto;
 import com.wuyuan.video.module.Video;
+import com.wuyuan.video.module.VideoGroupDto;
 
 import java.util.List;
 
@@ -11,4 +12,6 @@ import java.util.List;
 public interface VideoMapper {
 
     List<Video> getVideoListPage(GeneralRequestDto requestDto);
+
+    List<VideoGroupDto> getVideoGroups();
 }
