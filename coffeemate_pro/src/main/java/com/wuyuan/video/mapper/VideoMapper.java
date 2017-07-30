@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface VideoMapper {
 
-    List<Video> getVideoList(GeneralRequestDto requestDto);
+    List<Video> getVideoListPage(GeneralRequestDto requestDto);
 }

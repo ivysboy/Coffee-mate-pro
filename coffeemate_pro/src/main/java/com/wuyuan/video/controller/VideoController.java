@@ -41,7 +41,7 @@ public class VideoController {
         requestDto.setPage(pageParameter);
         requestDto.setOrderBy("-create_time");
 
-        List<Video> videoList = videoMapper.getVideoList(requestDto);
+        List<Video> videoList = videoMapper.getVideoListPage(requestDto);
         return Result.success(videoList);
     }
 }
