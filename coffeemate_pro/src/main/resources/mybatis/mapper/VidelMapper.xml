@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuyuan.video.mapper.VideoMapper">
+    <select id="getVideoList" resultType="com.wuyuan.video.module.Video">
+        SELECT
+            id,
+            video_url AS videoUrl,
+            cover_url AS coverUrl,
+            title,
+            `like`
+        FROM video
+        WHERE is_disable = 0 OR is_disable IS NULL
+    </select>
+</mapper>
