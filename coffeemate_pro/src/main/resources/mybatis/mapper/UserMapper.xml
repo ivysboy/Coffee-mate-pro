@@ -77,4 +77,63 @@
         WHERE email = #{email}
         AND password = #{passWord}
     </select>
+    <select id="getDeviceInfo" resultType="com.wuyuan.user.module.DeviceInfoDto">
+        SELECT
+            id,
+            device_id AS deviceId,
+            device_platform AS devicePlatform,
+            system_version AS systemVersion,
+            last_login_time AS lastLoginTime,
+            prodVersion
+        FROM anonymous
+        WHERE device_id = #{deviceId}
+    </select>
+    <insert id="insertDeviceInfo">
+        INSERT INTO anonymous (
+        <if test="id != null">
+            id,
+        </if>
+        <if test="deviceId != null">
+            device_id,
+        </if>
+        <if test="devicePlatform != null">
+            device_platform,
+        </if>
+        <if test="systemVersion != null">
+            system_version,
+        </if>
+        <if test="prodVersion != null">
+            prodVersion,
+        </if>
+        last_login_time
+        ) VALUES (
+        <if test="id != null">
+            #{id},
+        </if>
+        <if test="deviceId != null">
+            #{deviceId},
+        </if>
+        <if test="devicePlatform != null">
+            #{devicePlatform},
+        </if>
+        <if test="systemVersion != null">
+            #{systemVersion},
+        </if>
+        <if test="prodVersion != null">
+            #{prodVersion},
+        </if>
+        now()
+        )
+    </insert>
+
+    <update id="updateLoginInfo">
+        UPDATE anonymous
+        <set>
+            <if test="prodVersion != null">
+                prodVersion = #{prodVersion,jdbcType=VARCHAR},
+            </if>
+            last_login_time = now()
+        </set>
+        WHERE device_id = #{id}
+    </update>
 </mapper>

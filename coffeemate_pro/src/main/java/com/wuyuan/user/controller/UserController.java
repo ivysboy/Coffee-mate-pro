@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.happylifeplat.Result;
 import com.happylifeplat.messagecode.impl.AppApiCode;
 import com.wuyuan.user.mapper.UserMapper;
+import com.wuyuan.user.module.DeviceInfoDto;
 import com.wuyuan.user.module.UserDto;
 import com.wuyuan.user.module.UserSignInDto;
 import org.slf4j.Logger;
@@ -86,6 +87,28 @@ public class UserController {
             return Result.error();
         }
         return signIn(user);
+    }
+
+    @PostMapping("/anonymous")
+    @ResponseBody
+    public Result anonymousDeviceInfo(@RequestBody DeviceInfoDto device) {
+        if(StringUtils.isEmpty(device.getDeviceId())) {
+            return Result.error(AppApiCode.params_error);
+        }
+
+        device.setId(UUID.randomUUID().toString());
+
+        DeviceInfoDto info = userMapper.getDeviceInfo(device.getDeviceId());
+        if(info == null) {
+            int insertResult = userMapper.insertDeviceInfo(device);
+            if(insertResult <= 0) {
+                return Result.error();
+            }
+            return Result.success(device);
+        }
+        userMapper.updateLoginInfo(info.getDeviceId(), device.getProdVersion());
+        info.setProdVersion(device.getProdVersion());
+        return Result.success(info);
     }
 
     private Result signIn(UserDto user) {
