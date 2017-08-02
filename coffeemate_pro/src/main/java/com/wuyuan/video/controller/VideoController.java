@@ -2,7 +2,6 @@ package com.wuyuan.video.controller;
 
 import com.happylifeplat.Result;
 import com.happylifeplat.plugin.mybatis.pager.PageParameter;
-import com.sun.org.apache.regexp.internal.RE;
 import com.wuyuan.home.module.GeneralRequestDto;
 import com.wuyuan.video.mapper.VideoMapper;
 import com.wuyuan.video.module.GroupVideoListDto;

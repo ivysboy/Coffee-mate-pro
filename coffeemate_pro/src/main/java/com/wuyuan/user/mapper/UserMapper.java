@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface UserMapper {
 
+    // user login
     List<String> checkRepeatAccout(@Param("email") String email);
 
     int insertUser(UserDto user);
@@ -25,4 +26,7 @@ public interface UserMapper {
     int insertDeviceInfo(DeviceInfoDto device);
 
     int updateLoginInfo(DeviceInfoDto device);
+
+    // user feedback
+
 }
