@@ -2,6 +2,7 @@ package com.wuyuan.home.mapper;
 
 import com.wuyuan.home.module.ArticleDto;
 import com.wuyuan.home.module.ArticleListDto;
+import com.wuyuan.home.module.CollectArticleDto;
 import com.wuyuan.home.module.GeneralRequestDto;
 import org.apache.ibatis.annotations.Param;
 
@@ -39,4 +40,33 @@ public interface ArticlesMapper {
      * @return
      */
     int updateArticle(ArticleDto article);
+
+    /**
+     * 检查一下是否收藏了这个文章
+     * @param collectArticle
+     * @return
+     */
+    List<String> checkCollectionExist(CollectArticleDto collectArticle);
+
+    /**
+     * 插入收藏的文章
+     * @param collectArticle
+     * @return
+     */
+    int insertCollectArticle(CollectArticleDto collectArticle);
+
+    /**
+     * 移除收藏
+     * @param collectArticle
+     * @return
+     */
+    int removeCollectiton(CollectArticleDto collectArticle);
+
+    /**
+     * 获取用户收藏文章列表
+     * @param userId
+     * @return
+     */
+    List<String> getUserCollectArticles(@Param("userId") String userId);
+
 }

@@ -55,7 +55,7 @@ public class PushController {
     private static PushPayload buildPushObject_all_alias_alert() {
         return PushPayload.newBuilder()
                 .setPlatform(Platform.all())
-                .setAudience(Audience.alias("coffe-mate"))
+                .setAudience(Audience.alias("coffemate"))
                 .setNotification(Notification.alert(ALERT))
                 .build();
     }

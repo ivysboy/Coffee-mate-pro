@@ -5,13 +5,12 @@ import com.happylifeplat.messagecode.impl.AppApiCode;
 import com.happylifeplat.messagecode.impl.CommonCode;
 import com.happylifeplat.plugin.mybatis.pager.PageParameter;
 import com.wuyuan.home.mapper.ArticlesMapper;
-import com.wuyuan.home.module.ArticleDto;
-import com.wuyuan.home.module.ArticleListDto;
-import com.wuyuan.home.module.GeneralRequestDto;
+import com.wuyuan.home.module.*;
 import com.wuyuan.util.ServerSetting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -87,5 +86,63 @@ public class ArticlesController {
 
         article.setImage(serverSetting.getImagePrefix() + article.getImage());
         return Result.success(article);
+    }
+
+    @PostMapping("/collectArticle")
+    @ResponseBody
+    public Result collectArticles(@RequestBody CollectArticleDto collection) {
+        if(StringUtils.isEmpty(collection.getArticleId())
+                || StringUtils.isEmpty(collection.getUserId())){
+            return Result.error(AppApiCode.params_error);
+        }
+
+        if(CollectionEnum.getCollection(collection.getOperation()) == null) {
+            collection.setOperation(1);
+        }
+
+        CollectionEnum collectAction = CollectionEnum.getCollection(collection.getOperation());
+
+        switch (collectAction) {
+            case COLLECT: {
+                List<String> existArticles = articlesMapper.checkCollectionExist(collection);
+                if(!CollectionUtils.isEmpty(existArticles)) {
+                    return Result.error();
+                }
+
+                collection.setId(UUID.randomUUID().toString());
+                int result = articlesMapper.insertCollectArticle(collection);
+                if(result <= 0) {
+                    return Result.error();
+                }
+
+                return Result.success();
+            }
+            case DIS_COLLECT: {
+                List<String> existArticles = articlesMapper.checkCollectionExist(collection);
+                if(CollectionUtils.isEmpty(existArticles)) {
+                    return Result.error();
+                }
+
+                int result = articlesMapper.removeCollectiton(collection);
+                if(result <= 0) {
+                    return Result.error();
+                }
+
+                return Result.success();
+            }
+
+            default:return Result.error(AppApiCode.params_error);
+        }
+    }
+
+    @GetMapping("/getUserCollectArticles")
+    @ResponseBody
+    public Result getUserCollectArticles(@RequestParam String userId) {
+        if(StringUtils.isEmpty(userId)) {
+            return Result.error(AppApiCode.params_error);
+        }
+
+        List<String> articles = articlesMapper.getUserCollectArticles(userId);
+        return Result.success(articles);
     }
 }
