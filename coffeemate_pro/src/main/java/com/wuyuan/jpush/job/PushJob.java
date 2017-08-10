@@ -10,14 +10,10 @@ import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
 import cn.jpush.api.push.model.audience.Audience;
 import cn.jpush.api.push.model.notification.Notification;
-import com.wuyuan.jpush.service.PushService;
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-
-import static cn.jpush.api.push.model.notification.PlatformNotification.ALERT;
 
 /**
  * Created by xuwuyuan on 2017/8/10.
@@ -40,18 +36,18 @@ public class PushJob implements Job {
 
         if(!StringUtils.isEmpty(id)) {
             log.info("================执行任务开始");
-            PushPayload payload = buildPushObject_all_alias_alert();
+            PushPayload payload = buildPushObject("咖啡伴我心，让精品咖啡走进你的生活！");
             sendPush(payload);
         } else {
             log.error("================执行推送任务失败");
         }
     }
 
-    public PushPayload buildPushObject_all_alias_alert() {
+    public PushPayload buildPushObject(String content) {
         return PushPayload.newBuilder()
-                .setPlatform(Platform.ios())
+                .setPlatform(Platform.all())
                 .setAudience(Audience.all())
-                .setNotification(Notification.alert(ALERT))
+                .setNotification(Notification.alert(content))
                 .setOptions(Options.newBuilder().setApnsProduction(true).build())
                 .build();
     }
