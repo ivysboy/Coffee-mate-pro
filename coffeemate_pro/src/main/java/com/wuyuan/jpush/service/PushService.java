@@ -8,7 +8,7 @@ import cn.jpush.api.push.model.PushPayload;
  */
 public interface PushService {
 
-    PushPayload buildPushObject_all_alias_alert();
+    PushPayload buildPushObject(String content);
 
     PushResult sendPush(PushPayload pushPayload);
 }

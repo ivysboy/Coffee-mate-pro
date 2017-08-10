@@ -10,6 +10,7 @@ import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
 import cn.jpush.api.push.model.audience.Audience;
 import cn.jpush.api.push.model.notification.Notification;
+import com.wuyuan.util.Constant;
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,12 +21,11 @@ import org.springframework.util.StringUtils;
  */
 public class PushJob implements Job {
 
-    private static final String MASTER_SECRET = "f05eb2edd236fdbab678dac4";
-    private static final String APP_KEY = "f9e0b3b422f675e0f176d2fe";
-    private static final JPushClient jpushClient = new JPushClient(MASTER_SECRET, APP_KEY, null, ClientConfig.getInstance());
+    private static final JPushClient jpushClient = new JPushClient(Constant.JPUSH_MASTER_SECRET, Constant.JPUSH_APP_KEY, null, ClientConfig.getInstance());
 
     public static final String ID = "PushJobId";
     public static final String GROUP = "PushJobGroup";
+
     private static final Logger log = LoggerFactory.getLogger(PushJob.class);
 
     @Override
