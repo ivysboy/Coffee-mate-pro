@@ -20,9 +20,9 @@ public class PushController {
     @Autowired
     private PushService pushService;
 
-    @GetMapping("/pushNow/{content}")
+    @GetMapping("/pushNow")
     @ResponseBody
-    public Result pushAllAlert(@PathVariable String content) {
+    public Result pushAllAlert(@RequestParam String content) {
 
         log.info("=================send notification of : " + content);
         PushPayload payload = pushService.buildPushObject(content);

@@ -33,7 +33,7 @@ public class PushJobHandler implements PushJobService {
             SimpleScheduleBuilder simpleScheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInHours(24).repeatForever();
             TriggerKey triggerKey = TriggerKey.triggerKey(PUSH_JOB_KEY, PushJob.GROUP);
 
-            Date fireDate = new Date(new Date().getTime() + 1000 * 5);
+            Date fireDate = new Date(new Date().getTime() + 1000 * 60 * 60);
             SimpleTrigger trigger = TriggerBuilder.newTrigger()
                     .startAt(fireDate)
                     .withIdentity(triggerKey)
