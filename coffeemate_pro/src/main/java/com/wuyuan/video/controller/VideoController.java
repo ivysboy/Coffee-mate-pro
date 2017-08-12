@@ -45,7 +45,7 @@ public class VideoController {
             GeneralRequestDto requestDto = new GeneralRequestDto();
             requestDto.setPage(pageParameter);
             requestDto.setGroupId(videoGroup.getId());
-            requestDto.setOrderBy("-create_time");
+            requestDto.setOrderBy("-createtime");
             List<Video> videos = videoMapper.getVideoListPage(requestDto);
 
             if(!CollectionUtils.isEmpty(videos)) {
@@ -73,7 +73,7 @@ public class VideoController {
 
         GeneralRequestDto requestDto = new GeneralRequestDto();
         requestDto.setPage(pageParameter);
-        requestDto.setOrderBy("-create_time");
+        requestDto.setOrderBy("-createtime");
         requestDto.setGroupId(groupId);
 
         List<Video> videoList = videoMapper.getVideoListPage(requestDto);

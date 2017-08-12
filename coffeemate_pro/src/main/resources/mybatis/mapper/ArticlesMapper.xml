@@ -58,13 +58,25 @@
 
     <select id="getArticlesPage" resultType="com.wuyuan.home.module.ArticleListDto">
         SELECT
-            id,
-            name AS title,
-            brief,
-            image,
-            auther
-        FROM articles
-        WHERE group_id = #{groupId}
+            a.id,
+            a.name AS title,
+            a.brief,
+            a.image,
+            a.auther,
+            a.create_time AS createTime
+
+        FROM articles a
+        <if test="userId != null">
+            LEFT JOIN article_collection ac ON a.id = ac.article_id
+        </if>
+
+        WHERE 1=1
+        <if test="groupId != null">
+            AND a.group_id = #{groupId}
+        </if>
+        <if test="userId != null">
+            AND ac.user_id = #{userId}
+        </if>
     </select>
     <select id="getArticleById" resultType="com.wuyuan.home.module.ArticleDto">
         SELECT
@@ -99,11 +111,4 @@
         WHERE user_id = #{userId}
         AND article_id = #{articleId}
     </update>
-
-    <select id="getUserCollectArticles" resultType="java.lang.String">
-        SELECT article_id
-        FROM article_collection
-        WHERE user_id = #{userId}
-        AND is_disable = 0
-    </select>
 </mapper>

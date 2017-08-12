@@ -1,6 +1,7 @@
 package com.wuyuan.video.module;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by xuwuyuan on 2017/7/30.
@@ -12,6 +13,15 @@ public class Video implements Serializable {
     private String videoUrl;
     private String coverUrl;
     private String title;
+    private Date createTime;
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public String getId() {
         return id;

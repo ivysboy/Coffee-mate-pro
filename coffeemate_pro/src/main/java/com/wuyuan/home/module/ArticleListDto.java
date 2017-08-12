@@ -1,6 +1,7 @@
 package com.wuyuan.home.module;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by xuwuyuan on 2017/7/30.
@@ -14,6 +15,15 @@ public class ArticleListDto implements Serializable {
     private String auther;
     private String brief;
     private String image;
+    private Date createTime;
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public String getId() {
         return id;

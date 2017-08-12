@@ -62,11 +62,4 @@ public interface ArticlesMapper {
      */
     int removeCollectiton(CollectArticleDto collectArticle);
 
-    /**
-     * 获取用户收藏文章列表
-     * @param userId
-     * @return
-     */
-    List<String> getUserCollectArticles(@Param("userId") String userId);
-
 }

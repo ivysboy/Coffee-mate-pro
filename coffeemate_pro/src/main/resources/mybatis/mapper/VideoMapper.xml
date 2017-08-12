@@ -7,7 +7,8 @@
             video_url AS videoUrl,
             cover_url AS coverUrl,
             title,
-            `like`
+            `like`,
+            create_time AS createTime
         FROM video
         WHERE is_disable = 0 OR is_disable IS NULL
         AND group_id = #{groupId}

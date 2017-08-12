@@ -42,29 +42,20 @@ public class ArticlesController {
         return Result.success(result);
     }
 
-    @GetMapping("/list")
+    @PostMapping("/list")
     @ResponseBody
-    public Result getArticlesList(@RequestParam int page, String orderBy, @RequestParam String groupId) {
-        if(page == 0) {
-            page = 1;
-        }
-
-        if(StringUtils.isEmpty(groupId)) {
+    public Result getArticlesList(@RequestBody GeneralRequestDto requestDto) {
+        if(StringUtils.isEmpty(requestDto.getGroupId())
+           && StringUtils.isEmpty(requestDto.getUserId())) {
             return Result.error(AppApiCode.params_error);
         }
 
-        if(StringUtils.isEmpty(orderBy)) {
-            orderBy = "-create_time";
+        if(requestDto.getPage() == null) {
+            requestDto.setPage(new PageParameter());
         }
 
-        GeneralRequestDto requestDto = new GeneralRequestDto();
-        PageParameter pageParameter = new PageParameter();
-        pageParameter.setCurrentPage(page);
-        requestDto.setPage(pageParameter);
-        requestDto.setGroupId(groupId);
-
-        if(!StringUtils.isEmpty(orderBy)) {
-            requestDto.setOrderBy(orderBy);
+        if(StringUtils.isEmpty(requestDto.getOrderBy())) {
+            requestDto.setOrderBy("-createtime");
         }
 
         List<ArticleListDto> articles = articlesMapper.getArticlesPage(requestDto);
@@ -135,14 +126,4 @@ public class ArticlesController {
         }
     }
 
-    @GetMapping("/getUserCollectArticles")
-    @ResponseBody
-    public Result getUserCollectArticles(@RequestParam String userId) {
-        if(StringUtils.isEmpty(userId)) {
-            return Result.error(AppApiCode.params_error);
-        }
-
-        List<String> articles = articlesMapper.getUserCollectArticles(userId);
-        return Result.success(articles);
-    }
 }

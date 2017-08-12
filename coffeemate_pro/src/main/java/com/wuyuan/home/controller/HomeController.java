@@ -63,7 +63,7 @@ public class HomeController {
             page.setCurrentPage(1);
             page.setPageSize(7);
             articleRequest.setGroupId(content.getGroupId());
-            articleRequest.setOrderBy("-create_time");
+            articleRequest.setOrderBy("-createtime");
             articleRequest.setPage(page);
             List<ArticleListDto> articleList = articlesMapper.getArticlesPage(articleRequest);
             articleList.forEach(article -> {

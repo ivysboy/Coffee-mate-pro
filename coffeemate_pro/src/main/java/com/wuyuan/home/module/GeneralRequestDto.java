@@ -9,6 +9,15 @@ public class GeneralRequestDto {
     private PageParameter page;
     private String orderBy;
     private String groupId;
+    private String userId;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getGroupId() {
         return groupId;
