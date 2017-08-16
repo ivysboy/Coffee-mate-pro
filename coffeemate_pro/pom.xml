@@ -98,7 +98,7 @@
         <dependency>
             <groupId>com.happylifeplat</groupId>
             <artifactId>message-code</artifactId>
-            <version>1.0.1.RELEASE</version>
+            <version>1.0.3-RELEASE</version>
         </dependency>
 
         <dependency>
