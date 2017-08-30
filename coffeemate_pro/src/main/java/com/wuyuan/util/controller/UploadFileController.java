@@ -1,8 +1,8 @@
 package com.wuyuan.util.controller;
 
+import com.wuyuan.config.ApolloCoffeeMateConfig;
 import com.wuyuan.home.mapper.ArticlesMapper;
 import com.wuyuan.home.module.ArticleDto;
-import com.wuyuan.util.ServerSetting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class UploadFileController {
     private static final Logger log = LoggerFactory.getLogger(UploadFileController.class);
 
     @Autowired
-    private ServerSetting serverSetting;
+    private ApolloCoffeeMateConfig apolloCoffeeMateConfig;
 
     @Autowired
     private ArticlesMapper articlesMapper;
@@ -54,7 +54,7 @@ public class UploadFileController {
                 String ext = filename.substring(filename.lastIndexOf("."));
                 name = name + ext;
                 byte[] bytes = file.getBytes();
-                File image = new File(serverSetting.getImageStorePath() + name);
+                File image = new File(apolloCoffeeMateConfig.getImageStorePath() + name);
                 OutputStream outputStream = new FileOutputStream(image);
                 BufferedOutputStream stream =
                         new BufferedOutputStream(outputStream);
@@ -64,7 +64,7 @@ public class UploadFileController {
 
                 ArticleDto article = new ArticleDto();
                 article.setId(articleId);
-                article.setImage(serverSetting.getImageContentPath() + name);
+                article.setImage(apolloCoffeeMateConfig.getImageContentPath() + name);
                 articlesMapper.updateArticle(article);
 
                 result.put("name", name);

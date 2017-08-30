@@ -4,9 +4,9 @@ import com.happylifeplat.Result;
 import com.happylifeplat.messagecode.impl.AppApiCode;
 import com.happylifeplat.messagecode.impl.CommonCode;
 import com.happylifeplat.plugin.mybatis.pager.PageParameter;
+import com.wuyuan.config.ApolloCoffeeMateConfig;
 import com.wuyuan.home.mapper.ArticlesMapper;
 import com.wuyuan.home.module.*;
-import com.wuyuan.util.ServerSetting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class ArticlesController {
     private ArticlesMapper articlesMapper;
 
     @Autowired
-    private ServerSetting serverSetting;
+    private ApolloCoffeeMateConfig apolloCoffeeMateConfig;
 
     @PostMapping("/insertArticles")
     @ResponseBody
@@ -59,7 +59,7 @@ public class ArticlesController {
         }
 
         List<ArticleListDto> articles = articlesMapper.getArticlesPage(requestDto);
-        articles.forEach(article -> article.setImage(serverSetting.getImagePrefix() + article.getImage()));
+        articles.forEach(article -> article.setImage(apolloCoffeeMateConfig.getImagePrefix() + article.getImage()));
         return Result.success(articles);
     }
 
@@ -75,7 +75,7 @@ public class ArticlesController {
             return Result.error(CommonCode.fail);
         }
 
-        article.setImage(serverSetting.getImagePrefix() + article.getImage());
+        article.setImage(apolloCoffeeMateConfig.getImagePrefix() + article.getImage());
         return Result.success(article);
     }
 

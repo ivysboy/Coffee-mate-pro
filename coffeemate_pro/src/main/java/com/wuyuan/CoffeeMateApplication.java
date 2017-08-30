@@ -1,5 +1,6 @@
 package com.wuyuan;
 
+import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.ImportResource;
  */
 @ImportResource({"classpath:spring/applicationContext.xml"})
 @SpringBootApplication
+@EnableApolloConfig
 public class CoffeeMateApplication {
 
     public static void main(String[] args) {

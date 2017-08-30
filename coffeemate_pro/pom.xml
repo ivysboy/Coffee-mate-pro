@@ -10,35 +10,35 @@
 
     <packaging>jar</packaging>
 
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <profiles.active>dev</profiles.active>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <build>
-                <filters>
-                    <filter>profiles/dev/config.properties</filter>
-                    <filter>profiles/dev/server.properties</filter>
-                </filters>
-            </build>
-        </profile>
-        <profile>
-            <id>prod</id>
-            <properties>
-                <profiles.active>prod</profiles.active>
-            </properties>
-            <build>
-                <filters>
-                    <filter>profiles/prod/config.properties</filter>
-                    <filter>profiles/dev/server.properties</filter>
-                </filters>
-            </build>
-        </profile>
-    </profiles>
+    <!--<profiles>-->
+        <!--<profile>-->
+            <!--<id>dev</id>-->
+            <!--<properties>-->
+                <!--<profiles.active>dev</profiles.active>-->
+            <!--</properties>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--<build>-->
+                <!--<filters>-->
+                    <!--<filter>profiles/dev/config.properties</filter>-->
+                    <!--<filter>profiles/dev/server.properties</filter>-->
+                <!--</filters>-->
+            <!--</build>-->
+        <!--</profile>-->
+        <!--<profile>-->
+            <!--<id>prod</id>-->
+            <!--<properties>-->
+                <!--<profiles.active>prod</profiles.active>-->
+            <!--</properties>-->
+            <!--<build>-->
+                <!--<filters>-->
+                    <!--<filter>profiles/prod/config.properties</filter>-->
+                    <!--<filter>profiles/dev/server.properties</filter>-->
+                <!--</filters>-->
+            <!--</build>-->
+        <!--</profile>-->
+    <!--</profiles>-->
 
     <repositories>
         <repository>
@@ -48,6 +48,14 @@
             <id>public</id>
             <name>happylifeplat public repository</name>
             <url>http://maven.wang-guanjia.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>public-my</id>
+            <name>ivysboy public repository</name>
+            <url>http://nexus.ivysboy.com/nexus/content/groups/public/</url>
         </repository>
         <repository>
             <id>spring-releases</id>
@@ -69,6 +77,12 @@
     </properties>
 
     <dependencies>
+        <!--apollo -->
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+            <version>0.9.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>cn.jpush.api</groupId>
             <artifactId>jpush-client</artifactId>

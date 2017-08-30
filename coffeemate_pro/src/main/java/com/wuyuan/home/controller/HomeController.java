@@ -2,13 +2,13 @@ package com.wuyuan.home.controller;
 
 import com.happylifeplat.Result;
 import com.happylifeplat.plugin.mybatis.pager.PageParameter;
+import com.wuyuan.config.ApolloCoffeeMateConfig;
 import com.wuyuan.home.mapper.ArticlesMapper;
 import com.wuyuan.home.mapper.HomeMapper;
 import com.wuyuan.home.module.ArticleListDto;
 import com.wuyuan.home.module.BannerDto;
 import com.wuyuan.home.module.GeneralRequestDto;
 import com.wuyuan.home.module.HomeContentDto;
-import com.wuyuan.util.ServerSetting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class HomeController {
     private ArticlesMapper articlesMapper;
 
     @Autowired
-    private ServerSetting serverSetting;
+    private ApolloCoffeeMateConfig apolloCoffeeMateConfig;
 
     @GetMapping("/banner")
     @ResponseBody
@@ -67,7 +67,7 @@ public class HomeController {
             articleRequest.setPage(page);
             List<ArticleListDto> articleList = articlesMapper.getArticlesPage(articleRequest);
             articleList.forEach(article -> {
-                article.setImage(serverSetting.getImagePrefix() + article.getImage());
+                article.setImage(apolloCoffeeMateConfig.getImagePrefix() + article.getImage());
             });
             content.setArticleList(articleList);
         }
