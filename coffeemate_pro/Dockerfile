@@ -4,8 +4,9 @@ EXPOSE 8098
 
 ENV APP_NAME=coffee-mate
 ENV JAR_PATH=/coffee-mate.jar
+ENV APP_ENV=DEV
 
 ADD target/coffee-mate.jar $JAR_PATH
 RUN sh -c 'touch /coffee-mate.jar'
 ENV JAVA_OPTS="-Djava.net.preferIPv4Stack=true"
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /coffee-mate.jar" ]
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Denv=$APP_ENV -Djava.security.egd=file:/dev/./urandom -jar /coffee-mate.jar" ]
