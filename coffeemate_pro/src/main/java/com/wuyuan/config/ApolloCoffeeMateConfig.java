@@ -20,13 +20,13 @@ public class ApolloCoffeeMateConfig {
     @ApolloConfig
     private Config config;
 
-    @Value("server.imagePrefix")
+    @Value("${server.imagePrefix}")
     private String imagePrefix;
 
-    @Value("server.imageContentPath")
+    @Value("${server.imageContentPath}")
     private String imageContentPath;
 
-    @Value("server.imageStorePath")
+    @Value("${server.imageStorePath}")
     private String imageStorePath;
 
     @ApolloConfigChangeListener("application")
