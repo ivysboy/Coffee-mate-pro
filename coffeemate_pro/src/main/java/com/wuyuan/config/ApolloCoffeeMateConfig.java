@@ -17,7 +17,7 @@ public class ApolloCoffeeMateConfig {
 
     private static final Logger log = LoggerFactory.getLogger(ApolloCoffeeMateConfig.class);
 
-    @ApolloConfig
+    @ApolloConfig("application")
     private Config config;
 
     @Value("${server.imagePrefix}")
