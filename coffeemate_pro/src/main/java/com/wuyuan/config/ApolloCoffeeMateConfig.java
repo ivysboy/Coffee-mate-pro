@@ -42,14 +42,14 @@ public class ApolloCoffeeMateConfig {
     }
 
     public String getImagePrefix() {
-        return config.getProperty("server.imagePrefix", imagePrefix);
+        return imagePrefix;
     }
 
     public String getImageContentPath() {
-        return config.getProperty("server.imageContentPath", imageContentPath);
+        return imageContentPath;
     }
 
     public String getImageStorePath() {
-        return config.getProperty("server.imageStorePath", imageStorePath);
+        return imageStorePath;
     }
 }
