@@ -14,6 +14,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -76,7 +77,12 @@ public class ArticlesController {
         }
 
         article.setImage(apolloCoffeeMateConfig.getImagePrefix() + article.getImage());
-        return Result.success(article);
+
+        List<ArticleDto> articles = new ArrayList<>();
+        articles.add(article);
+        articles.add(article);
+        articles.add(article);
+        return Result.success(articles);
     }
 
     @PostMapping("/collectArticle")
