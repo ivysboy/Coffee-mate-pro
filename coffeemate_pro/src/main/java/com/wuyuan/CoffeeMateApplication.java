@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ImportResource;
  */
 @ImportResource({"classpath:spring/applicationContext.xml"})
 @SpringBootApplication
-@EnableApolloConfig
+@EnableApolloConfig({"application"})
 public class CoffeeMateApplication {
 
     public static void main(String[] args) {

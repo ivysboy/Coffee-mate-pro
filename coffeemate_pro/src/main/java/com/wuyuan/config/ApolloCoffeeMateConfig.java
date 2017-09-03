@@ -8,16 +8,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by xuwuyuan on 2017/8/31.
  */
-@Configuration
+@Component
 public class ApolloCoffeeMateConfig {
 
     private static final Logger log = LoggerFactory.getLogger(ApolloCoffeeMateConfig.class);
 
-    @ApolloConfig("application")
+    @ApolloConfig
     private Config config;
 
     @Value("${server.imagePrefix}")
@@ -31,7 +32,7 @@ public class ApolloCoffeeMateConfig {
 
     @ApolloConfigChangeListener("application")
     private void propChangeHandler(ConfigChangeEvent changeEvent) {
-        log.info("changeEvent = [" + changeEvent.toString() + "]");
+        log.info("===================changeEvent = [" + changeEvent.toString() + "]===================");
         if(changeEvent.isChanged("server.imagePrefix")) {
             imagePrefix = config.getProperty("server.imagePrefix", imagePrefix);
         } else if (changeEvent.isChanged("server.imageContentPath")) {
