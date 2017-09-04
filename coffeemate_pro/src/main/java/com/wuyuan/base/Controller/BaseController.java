@@ -40,4 +40,9 @@ public class BaseController {
 
         return new Result(CommonCode.sussess, articles);
     }
+
+    @GetMapping("/testApi")
+    public Result getTestApi() {
+        return Result.success("测试接口6666666");
+    }
 }
