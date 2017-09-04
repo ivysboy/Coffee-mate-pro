@@ -43,6 +43,6 @@ public class BaseController {
 
     @GetMapping("/testApi")
     public Result getTestApi() {
-        return Result.success("测试接口6666666");
+        return Result.success("测试接口6666666测试接口");
     }
 }
