@@ -1,5 +1,6 @@
 package com.wuyuan.config;
 
+import com.alibaba.fastjson.JSON;
 import com.ctrip.framework.apollo.Config;
 import com.ctrip.framework.apollo.model.ConfigChangeEvent;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfig;
@@ -31,7 +32,7 @@ public class ApolloCoffeeMateConfig {
 
     @ApolloConfigChangeListener("application")
     private void propChangeHandler(ConfigChangeEvent changeEvent) {
-        log.info("===================changeEvent = [" + changeEvent.toString() + "]===================");
+        log.info("===================changeEvent = [" + JSON.toJSON(changeEvent) + "]===================");
         if(changeEvent.isChanged("server.imagePrefix")) {
             imagePrefix = config.getProperty("server.imagePrefix", imagePrefix);
         } else if (changeEvent.isChanged("server.imageContentPath")) {
