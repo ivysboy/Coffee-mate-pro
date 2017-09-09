@@ -55,7 +55,7 @@
             </snapshots>
             <id>public-my</id>
             <name>ivysboy public repository</name>
-            <url>http://nexus.ivysboy.com/nexus/content/groups/public/</url>
+            <url>http://maven.ivysboy.com/nexus/content/groups/public/</url>
         </repository>
         <repository>
             <id>spring-releases</id>
