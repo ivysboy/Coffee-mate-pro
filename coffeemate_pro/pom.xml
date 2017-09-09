@@ -53,7 +53,7 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-            <id>public-my</id>
+            <id>wuyuan_public</id>
             <name>ivysboy public repository</name>
             <url>http://maven.ivysboy.com/nexus/content/groups/public/</url>
         </repository>
