@@ -1,7 +1,7 @@
 package com.wuyuan.video.controller;
 
 import com.wuyuan.Result;
-import com.happylifeplat.plugin.mybatis.pager.PageParameter;
+import com.wuyuan.plugin.mybatis.pager.PageParameter;
 import com.wuyuan.home.module.GeneralRequestDto;
 import com.wuyuan.video.mapper.VideoMapper;
 import com.wuyuan.video.module.GroupVideoListDto;

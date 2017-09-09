@@ -1,6 +1,6 @@
 package com.wuyuan.home.module;
 
-import com.happylifeplat.plugin.mybatis.pager.PageParameter;
+import com.wuyuan.plugin.mybatis.pager.PageParameter;
 
 /**
  * Created by xuwuyuan on 2017/7/23.

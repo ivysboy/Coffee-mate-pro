@@ -1,7 +1,7 @@
 package com.wuyuan.home.controller;
 
 import com.wuyuan.Result;
-import com.happylifeplat.plugin.mybatis.pager.PageParameter;
+import com.wuyuan.plugin.mybatis.pager.PageParameter;
 import com.wuyuan.config.ApolloCoffeeMateConfig;
 import com.wuyuan.home.mapper.ArticlesMapper;
 import com.wuyuan.home.mapper.HomeMapper;
