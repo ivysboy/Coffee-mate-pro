@@ -23,6 +23,6 @@
     <!-- Continue going here -->
 
     <plugins>
-        <plugin interceptor="com.happylifeplat.plugin.mybatis.pager.PageInterceptor"></plugin>
+        <plugin interceptor="com.wuyuan.plugin.mybatis.pager.PageInterceptor"></plugin>
     </plugins>
 </configuration>
