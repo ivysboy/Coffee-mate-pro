@@ -1,7 +1,7 @@
 package com.wuyuan.jpush.controller;
 
 import cn.jpush.api.push.model.PushPayload;
-import com.happylifeplat.Result;
+import com.wuyuan.Result;
 import com.wuyuan.jpush.service.PushService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

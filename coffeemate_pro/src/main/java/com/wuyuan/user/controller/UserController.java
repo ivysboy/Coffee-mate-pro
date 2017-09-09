@@ -1,8 +1,8 @@
 package com.wuyuan.user.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.happylifeplat.Result;
-import com.happylifeplat.messagecode.impl.AppApiCode;
+import com.wuyuan.Result;
+import com.wuyuan.messagecode.impl.AppApiCode;
 import com.wuyuan.user.mapper.UserMapper;
 import com.wuyuan.user.module.DeviceInfoDto;
 import com.wuyuan.user.module.UserDto;

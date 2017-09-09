@@ -63,6 +63,17 @@
         </repository>
     </repositories>
 
+    <distributionManagement>
+        <repository>
+            <id>wuyuan_releases</id>
+            <url>http://maven.ivysboy.com/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>wuyuan_snapshots</id>
+            <url>http://maven.ivysboy.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -110,9 +121,9 @@
             <version>${spring-boot-version}</version>
         </dependency>
         <dependency>
-            <groupId>com.happylifeplat</groupId>
+            <groupId>com.wuyuan</groupId>
             <artifactId>message-code</artifactId>
-            <version>1.0.3-RELEASE</version>
+            <version>1.0.4-SNAPSHOT</version>
         </dependency>
 
         <dependency>

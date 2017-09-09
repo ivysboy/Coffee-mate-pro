@@ -1,7 +1,7 @@
 package com.wuyuan.base.Controller;
 
-import com.happylifeplat.Result;
-import com.happylifeplat.messagecode.impl.CommonCode;
+import com.wuyuan.Result;
+import com.wuyuan.messagecode.impl.CommonCode;
 import com.wuyuan.base.mapper.BaseMapper;
 import com.wuyuan.home.module.ArticleDto;
 import com.wuyuan.base.module.CommonVO;
